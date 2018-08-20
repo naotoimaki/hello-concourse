@@ -1,0 +1,18 @@
+---
+# Resourceの定義
+resources:
+# Git Resourceの定義
+- name: hello
+  type: git
+  source:
+    uri: https://github.com/naotoimaki/hello-concourse.git
+
+# Jobの定義
+jobs:
+- name: hello-job
+  public: true
+  plan:
+  - get: hello
+    trigger: true
+  - task: run-hello
+    file: hello/sh/hello.yml
