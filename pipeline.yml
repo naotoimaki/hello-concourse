@@ -15,4 +15,4 @@ jobs:
   - get: hello
     trigger: true
   - task: run-hello
-    file: hello/sh/hello.yml
+    file: hello/helloOneOff.yml
