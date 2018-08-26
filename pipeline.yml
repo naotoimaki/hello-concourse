@@ -6,13 +6,29 @@ resources:
   type: git
   source:
     uri: https://github.com/naotoimaki/hello-concourse.git
+- name: result
+  type: git
+  source:
+    uri: git@gist.github.com:e5a21dd673c9cb4c56d70ba8203bbc3a.git
+    privete_key: {{github-private-key}}
+    branch: master
+
+
+
 
 # Jobの定義
 jobs:
 - name: hello-job
   public: true
   plan:
-  - get: hello
+  - get: hello # パイプラインのgitをpull
     trigger: true
-  - task: run-hello
+  - get: result # 出力結果のgitをpull
+    trigger: true
+  - task: run-hello # find . の結果をファイルに書き出すtask
     file: hello/helloOneOff.yml
+  - task: commit-log.yml # 出力結果ファイルをコミットするtask
+    file: hello/commit-log.yml
+  - put: result # 出力結果のgitをpush
+    params: 
+      repository: updated-result

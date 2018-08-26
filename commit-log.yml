@@ -1,0 +1,15 @@
+
+---
+platform: linux
+image_resource: 
+  type: docker-image
+  source:
+    repository: getourneau/alpine-bash-git
+inputs:
+  - name: hello # ソースコード
+  - name: result # clone用のgit
+  - name: out # 全タスクの出力を入力する
+outputs:
+  - name: updated-result # commit用のGitリポジトリ
+run:
+  path: ./hello/sh/commit-logs.sh
