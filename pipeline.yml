@@ -5,7 +5,7 @@ resources:
 - name: hello
   type: git
   source:
-    uri: git@gist.github.com:e5a21dd673c9cb4c56d70ba8203bbc3a.git
+    uri: https://github.com/naotoimaki/hello-concourse.git
 - name: result
   type: git
   source:
