@@ -10,7 +10,7 @@ resources:
   type: git
   source:
     uri: git@gist.github.com:e5a21dd673c9cb4c56d70ba8203bbc3a.git
-    privete_key: {{github-private-key}}
+    private_key: {{github-private-key}}
     branch: master
 
 
