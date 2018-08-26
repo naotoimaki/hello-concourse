@@ -24,7 +24,6 @@ jobs:
   - get: hello # パイプラインのgitをpull
     trigger: true
   - get: result # 出力結果のgitをpull
-    trigger: true
   - task: run-hello # find . の結果をファイルに書き出すtask
     file: hello/helloOneOff.yml
   - task: commit-log.yml # 出力結果ファイルをコミットするtask
